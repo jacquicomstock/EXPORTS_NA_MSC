@@ -45,7 +45,7 @@ source ~/.bashrc
 conda activate base
 ```
 
-Now you should have conda installed and activated on your system. Conda is called a 'package manager', it does handle all the annoying parts of installing a bioinformatics tool on your machine for you, so you don't have to worry about all of PhyloAssigners dependencies and having to make sure that they have been installed with the correct version and path, etc.
+Now you should have conda installed and activated on your system. Conda is called a 'package manager', it does handle all the annoying parts of installing a bioinformatics tool on your machine for you.
 
 ### 2) Installing R and dada2 on the cluster
 An updated R version (>=4.0) is available through the conda-forge channel, so first add the channel.
@@ -64,7 +64,7 @@ Check whether an updated R version is added in the conda search space or not.
 conda search r-base
 ```
 
-Now, it is always a good practice (recommoned here) to create a new conda environment, which will help to debug the package-specific and compatibility issues without disrupting the base environment.
+Now, it is always a good practice (recomemded here) to create a new conda environment, which will help to debug the package-specific and compatibility issues without disrupting the base environment.
 You can change the name to anything you want, here I have named it after the version of R I am installing (R4.1.3)
 ```{bash}
 conda create -n R4.1
