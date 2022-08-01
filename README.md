@@ -1,9 +1,10 @@
 # North Atlantic EXPORTS Marine Snowcatcher 16S DNA
 All processing &amp; analyses from raw fastq files to analyses &amp; figures are contained in the above scripts.
 
-Processing of all raw fastq files was done on a cluster through dada2, which was run in R. After denoising with dada2, ASV taxonomy was initially assigned using SILVA v138.
+Processing of all raw fastq files was done on a cluster through dada2, which was run in R. After denoising with dada2, ASV taxonomy was initially assigned using SILVA v138.1 at the species level
 
-Below is described how I installed all programs to run the above scripts. 
+
+Below is described how programs were installed on the cluster to run dada2 for those that wish to replicate the procedure exactly.
 #### This is written step-by-step for absolute beginners.
 
 ### 0) Access your cluster
