@@ -38,7 +38,7 @@ for (i in 1:dim(t.seqtab.nochim)[1]) {
   asv_headers[i] <- paste(">ASV", i, sep="_")
 }
 asv_fasta <- c(rbind(asv_headers, asv_seqs))
-write(asv_fasta, "MSCn_ASVs.fasta")
+write(asv_fasta, "MSC_ASVs.fasta")
 taxa <- assignTaxonomy(seqtab.nochim, "silva_nr99_v138.1_wSpecies_train_set.fa.gz")
 unname(head(taxa))
 saveRDS(taxa, "taxa.rds")
