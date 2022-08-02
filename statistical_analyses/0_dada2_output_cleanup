@@ -1,9 +1,17 @@
+load packages
+```{r}
+library(vegan)
+library(phyloseq)
+library(tidyverse)
+```
+
+
 Raw dada2 output cleanup
 ```{r}
 #remove eukaryotes, chloroplasts and mitochondria
 setwd("/Users/elisa/Desktop/dada2_output")
-count_tab <- read.csv("MSC_seqtab-nochimtaxa.csv", header=TRUE,sep=",",row.names=1)
-tax_tab <- read.csv("MSC_taxa.csv", header=TRUE,sep=",",row.names=1)
+count_tab <- read.csv("MSC_seqtab-nochimtaxa.csv", header=TRUE,sep=",",row.names=1, na.strings= "NOPE")
+tax_tab <- read.csv("MSC_taxa.csv", header=TRUE,sep=",",row.names=1, na.strings= "NOPE")
 #meta <- read.csv("MSC_metadata.csv", header=TRUE,sep=",",row.names=1)
 
 #Remove rows with chloroplast as the Order name
@@ -23,6 +31,9 @@ write.csv(TAX_nochl.mit.euk, file="MSC_taxa_NoChlMitEuk.csv", row.names=T)
 #generate rarefaction curve
 ASV <- ASV_nochl.mit.euk[,1:(ncol(ASV_nochl.mit.euk)-7)]
 rarecurve(ASV, step = 1000, col = "blue", label=F, xlim=c(0,20000))
+
+#sum reads in each sample to determine rarefaction depth
+sum <- as.data.frame(colSums(ASV))
 
 #rarefy samples to 8000
 OTU <- otu_table(ASV, taxa_are_rows = TRUE)
