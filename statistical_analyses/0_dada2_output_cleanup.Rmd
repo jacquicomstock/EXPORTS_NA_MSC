@@ -7,6 +7,9 @@ library(tidyverse)
 
 
 Raw dada2 output cleanup
+1. Remove chloroplast, mitochondria, eukaryote sequences
+2. rarefy all samples to 18000 reads to even sampling effort
+3. Remove singletons for later analyses (except alpha diversity)
 ```{r}
 #remove eukaryotes, chloroplasts and mitochondria
 setwd("/Users/elisa/Desktop/dada2_output")
