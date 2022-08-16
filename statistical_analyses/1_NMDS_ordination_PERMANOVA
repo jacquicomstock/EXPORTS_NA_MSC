@@ -35,8 +35,17 @@ ggplot(data = ALL.scores,
         ggtitle("NMDS ordination of all pump samples")+
         theme_classic(base_size = 14)+ 
         scale_color_viridis(option = "C", direction = -1)
-        
+ 
+#Subset data 
 AE1819 <- filter(mydata, Cruise == "AE1819")
 AE1819.asin <- as.matrix(asin(sqrt(AE1819[,9:ncol(AE1819)]/100)))
 AE1819.nmds <- metaMDS(AE1819.asin, distance = "bray")
-AE1819.scores <- as.data.frame(scores(AE1819.nmds))
+AE1819.scores <- as.data.frame(AE1819.nmds$points)
+
+#Run PERMANOVAs
+All.adonis1 <- adonis(ASV.bc ~ Cruise, data = mydata)
+All.adonis2 <- adonis(ASV.bc ~ Depth_m, data = mydata)
+All.adonis3 <- adonis(ASV.bc ~ Fraction_size_um, data = mydata)
+
+#look at PERMANOVA
+All.adonis1
